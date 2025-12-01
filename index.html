@@ -1192,60 +1192,53 @@
     }
   </script>
 	  <script>
-    function downloadWeddingSchedule() {
-      // Event Data (Title, Start Time, End Time)
-      // Note: Times are in format YYYYMMDDTHHmmSS
-      const events = [
-        {
-          title: "Ankitkumar Marriage - Mandap Muhrat",
-          start: "20260128T080000",
-          end:   "20260128T100000"
-        },
-        {
-          title: "Ankitkumar Marriage - Bhojan Samharambha",
-          start: "20260128T110000",
-          end:   "20260128T130000"
-        },
-        {
-          title: "Ankitkumar Marriage - Rass Dandiya",
-          start: "20260128T210000",
-          end:   "20260129T000000"
-        },
-        {
-          title: "Ankitkumar Marriage - Jan Prsthan",
-          start: "20260129T070000",
-          end:   "20260129T090000"
-        },
-        {
-          title: "Ankitkumar Marriage - Hast Melap",
-          start: "20260129T100000",
-          end:   "20260129T123000"
-        }
-      ];
+    function openCalendar() {
+    // 1. Sara data yahan set hai
+    var icsContent = 
+"BEGIN:VCALENDAR\n" +
+"VERSION:2.0\n" +
+"PRODID:-//Ankitkumar Marriage//EN\n" +
+"METHOD:PUBLISH\n" +
+// Event 1: Mandap Muhrat
+"BEGIN:VEVENT\n" +
+"SUMMARY:Mandap Muhrat - Ankitkumar Marriage\n" +
+"DTSTART:20260128T080000\n" +
+"DTEND:20260128T100000\n" +
+"LOCATION:Marriage Venue\n" +
+"END:VEVENT\n" +
+// Event 2: Bhojan
+"BEGIN:VEVENT\n" +
+"SUMMARY:Bhojan Samharambha\n" +
+"DTSTART:20260128T110000\n" +
+"DTEND:20260128T130000\n" +
+"END:VEVENT\n" +
+// Event 3: Rass Dandiya
+"BEGIN:VEVENT\n" +
+"SUMMARY:Rass Dandiya\n" +
+"DTSTART:20260128T210000\n" +
+"DTEND:20260129T000000\n" +
+"END:VEVENT\n" +
+// Event 4: Jan Prsthan
+"BEGIN:VEVENT\n" +
+"SUMMARY:Jan Prsthan\n" +
+"DTSTART:20260129T070000\n" +
+"DTEND:20260129T090000\n" +
+"END:VEVENT\n" +
+// Event 5: Hast Melap
+"BEGIN:VEVENT\n" +
+"SUMMARY:Hast Melap\n" +
+"DTSTART:20260129T100000\n" +
+"DTEND:20260129T123000\n" +
+"END:VEVENT\n" +
+"END:VCALENDAR";
 
-      // Build the .ics file content
-      let icsData = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Ankitkumar Wedding//EN\n";
-
-      events.forEach(event => {
-        icsData += "BEGIN:VEVENT\n";
-        icsData += "SUMMARY:" + event.title + "\n";
-        icsData += "DTSTART:" + event.start + "\n";
-        icsData += "DTEND:" + event.end + "\n";
-        icsData += "DESCRIPTION:Wedding Ceremony Event\n";
-        icsData += "END:VEVENT\n";
-      });
-
-      icsData += "END:VCALENDAR";
-
-      // Trigger Download
-      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'Ankitkumar_Full_Schedule.ics');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+    // 2. Mobile friendly link generation
+    // Hamesha encodeURIComponent use karein taki link break na ho
+    var uri = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(icsContent);
+    
+    // 3. Open directly
+    window.location.href = uri;
+}
   </script>
   </body>
 </html>
