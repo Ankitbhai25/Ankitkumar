@@ -128,7 +128,7 @@
                   <div class="simply-countdown simply-countdown-one"></div>
                   <h2>Save the Date : 29/01/2026</h2>
                   <p>
-                    <a href="#" onclick="openCalendar()" class="btn btn-default btn-sm">Save the date</a>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ankitkumar+Marriage&dates=20260128T080000/20260129T130000&details=Full+Wedding+Celebration:+Mandap+Muhrat,+Garba,+and+Hast+Melap&location=Wedding+Venue" class="btn btn-default btn-sm">Save the date</a>
                   </p>
                 </div>
               </div>
@@ -1156,89 +1156,5 @@
       });
     </script>
 	  
-  <script>
-    function createCalendarEvent() {
-      // 1. SET YOUR EVENT DETAILS HERE
-      const title = "Ankitkumar Marriage";
-      const description = "Don't forget to attend this Marriage!";
-      const location = "Online";
-      
-      // Date format: YYYYMMDDTHHmmSS (e.g., 2025-12-25 at 9:00 AM)
-      const startDate = "20260128T070000"; 
-      const endDate =   "20260129T120000"; 
-
-      // 2. Generate the ICS file content
-      const icsContent = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "BEGIN:VEVENT",
-        "SUMMARY:" + title,
-        "DESCRIPTION:" + description,
-        "LOCATION:" + location,
-        "DTSTART:" + startDate,
-        "DTEND:" + endDate,
-        "END:VEVENT",
-        "END:VCALENDAR"
-      ].join("\n");
-
-      // 3. Create a download link and click it automatically
-      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'event.ics');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  </script>
-	  <script>
-    function openCalendar() {
-    // 1. Sara data yahan set hai
-    var icsContent = 
-"BEGIN:VCALENDAR\n" +
-"VERSION:2.0\n" +
-"PRODID:-//Ankitkumar Marriage//EN\n" +
-"METHOD:PUBLISH\n" +
-// Event 1: Mandap Muhrat
-"BEGIN:VEVENT\n" +
-"SUMMARY:Mandap Muhrat - Ankitkumar Marriage\n" +
-"DTSTART:20260128T080000\n" +
-"DTEND:20260128T100000\n" +
-"LOCATION:Marriage Venue\n" +
-"END:VEVENT\n" +
-// Event 2: Bhojan
-"BEGIN:VEVENT\n" +
-"SUMMARY:Bhojan Samharambha\n" +
-"DTSTART:20260128T110000\n" +
-"DTEND:20260128T130000\n" +
-"END:VEVENT\n" +
-// Event 3: Rass Dandiya
-"BEGIN:VEVENT\n" +
-"SUMMARY:Rass Dandiya\n" +
-"DTSTART:20260128T210000\n" +
-"DTEND:20260129T000000\n" +
-"END:VEVENT\n" +
-// Event 4: Jan Prsthan
-"BEGIN:VEVENT\n" +
-"SUMMARY:Jan Prsthan\n" +
-"DTSTART:20260129T070000\n" +
-"DTEND:20260129T090000\n" +
-"END:VEVENT\n" +
-// Event 5: Hast Melap
-"BEGIN:VEVENT\n" +
-"SUMMARY:Hast Melap\n" +
-"DTSTART:20260129T100000\n" +
-"DTEND:20260129T123000\n" +
-"END:VEVENT\n" +
-"END:VCALENDAR";
-
-    // 2. Mobile friendly link generation
-    // Hamesha encodeURIComponent use karein taki link break na ho
-    var uri = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(icsContent);
-    
-    // 3. Open directly
-    window.location.href = uri;
-}
-  </script>
   </body>
 </html>
