@@ -961,29 +961,30 @@
     <script src="js/main.js"></script>
 
     <script>
-      var d = new Date("2026-01-29T12:00:00");
+  // Set date with 12:00 PM time
+  var d = new Date("2026-01-29T12:00:00");
 
-      // default example
-      simplyCountdown(".simply-countdown-one", {
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
-        hours: d.getHours(),
-        minutes: d.getMinutes(),
-        seconds: d.getSeconds(),
-      });
+  // default example
+  simplyCountdown(".simply-countdown-one", {
+    year: d.getFullYear(),
+    month: d.getMonth() + 1,
+    day: d.getDate(),
+    hours: 12,
+    minutes: 0,
+    seconds: 0,
+  });
 
-      // jQuery example (optional if you are using it)
-      $("#simply-countdown-losange").simplyCountdown({
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
-        hours: d.getHours(),
-        minutes: d.getMinutes(),
-        seconds: d.getSeconds(),
-        enableUtc: false,
-      });
-    </script>
+  // jQuery example
+  $("#simply-countdown-losange").simplyCountdown({
+    year: d.getFullYear(),
+    month: d.getMonth() + 1,
+    day: d.getDate(),
+    hours: 12,
+    minutes: 0,
+    seconds: 0,
+    enableUtc: false,
+  });
+	</script>
 	  
   </body>
 </html>
