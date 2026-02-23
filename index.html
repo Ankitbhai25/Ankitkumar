@@ -966,14 +966,20 @@
   var d = new Date("2026-01-29T12:00:00");
 
   // default example
-  simplyCountdown(".simply-countdown-one", {
-    year: d.getFullYear(),
-    month: d.getMonth() + 1,
-    day: d.getDate(),
-    hours: 12,
-    minutes: 0,
-    seconds: 0,
-  });
+simplyCountdown(".simply-countdown-one", {
+  year: d.getFullYear(),
+  month: d.getMonth() + 1,
+  day: d.getDate(),
+  hours: 12,
+  minutes: 0,
+  seconds: 0,
+  // optional: hide when expired
+  onEnd: function() {
+    // swap text to show "Time passed"
+    document.querySelector(".simply-countdown-one").innerHTML = "Time passed!";
+    return;
+  },
+});
 
   // jQuery example
   $("#simply-countdown-losange").simplyCountdown({
