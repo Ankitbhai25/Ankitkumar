@@ -962,40 +962,31 @@
     <script src="js/main.js"></script>
 
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Set your target past date at 12:00 PM
-  var targetDate = new Date("2026-01-29T12:00:00");
 
-  function updateReverseCountdown(selector) {
-    var now = new Date();
-    var diff = targetDate - now; // difference from past date
+  // Set date with 12:00 PM time
+  var d = new Date("2026-01-29T12:00:00");
 
-    // If date is passed, stop at 0
-    if (diff <= 0) diff = 0;
+  // default example
+  simplyCountdown(".simply-countdown-one", {
+    year: d.getFullYear(),
+    month: d.getMonth() + 1,
+    day: d.getDate(),
+    hours: 12,
+    minutes: 0,
+    seconds: 0,
+  });
 
-    // Convert milliseconds to days, hours, minutes, seconds
-    var seconds = Math.floor(diff / 1000) % 60;
-    var minutes = Math.floor(diff / (1000 * 60)) % 60;
-    var hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-    // Find element and update its content
-    var el = document.querySelector(selector);
-    if (el) {
-      el.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-    }
-  }
-
-  // Run countdown every second
-  setInterval(function() {
-    updateReverseCountdown(".simply-countdown-one");
-    updateReverseCountdown("#simply-countdown-losange");
-  }, 1000);
-
-  // Initial update
-  updateReverseCountdown(".simply-countdown-one");
-  updateReverseCountdown("#simply-countdown-losange");
-});
+  // jQuery example
+  $("#simply-countdown-losange").simplyCountdown({
+    year: d.getFullYear(),
+    month: d.getMonth() + 1,
+    day: d.getDate(),
+    hours: 12,
+    minutes: 0,
+    seconds: 0,
+    enableUtc: false,
+  });
+	
 	</script>
 	  
   </body>
