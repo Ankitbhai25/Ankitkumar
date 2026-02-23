@@ -186,14 +186,19 @@
                     secondWord;
 
                 now = new Date();
-                if (parameters.enableUtc) {
-                    nowUtc = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
-                        now.getHours(), now.getMinutes(), now.getSeconds());
-                    secondsLeft = (targetDate - nowUtc.getTime()) / 1000;
-
-                } else {
-                    secondsLeft = (targetDate - now.getTime()) / 1000;
-                }
+                       if (parameters.enableUtc) {
+          nowUtc = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate(),
+            now.getHours(),
+            now.getMinutes(),
+            now.getSeconds(),
+          );
+          secondsLeft = Math.abs(targetDate - nowUtc.getTime()) / 1000; // <-- absolute difference
+        } else {
+          secondsLeft = Math.abs(targetDate - now.getTime()) / 1000; // <-- absolute difference
+        }
 
                 if (secondsLeft > 0) {
                     days = parseInt(secondsLeft / 86400, 10);
