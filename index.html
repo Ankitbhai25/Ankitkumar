@@ -967,18 +967,25 @@
 
   // default example
 simplyCountdown(".simply-countdown-one", {
-  year: d.getFullYear(),
-  month: d.getMonth() + 1,
-  day: d.getDate(),
-  hours: 12,
-  minutes: 0,
-  seconds: 0,
-  // optional: hide when expired
-  onEnd: function() {
-    // swap text to show "Time passed"
-    document.querySelector(".simply-countdown-one").innerHTML = "Time passed!";
-    return;
+  var now = new Date();
+  var diff = d - now; // difference from past date
+
+  if (diff <= 0) {
+    diff = 0; // stop at 0
+  }
+
+  // Convert milliseconds to days, hours, minutes, seconds
+  var seconds = Math.floor(diff / 1000) % 60;
+  var minutes = Math.floor(diff / (1000 * 60)) % 60;
+  var hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  // Update the DOM
+  document.getElementById("reverse-countdown").innerHTML =
+    days + "d " + hours + "h " + minutes + "m " + seconds + "s";
   },
+		setInterval(updateReverseCountdown, 1000);
+updateReverseCountdown();
 });
 
   // jQuery example
